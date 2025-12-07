@@ -1,3 +1,6 @@
+import input from "analiza-sync";
+import allRiddels from "../riddles/index.js";
+
 export function createPlayer(name) {
   const player = {
     name,
@@ -21,21 +24,37 @@ export function showStats(player) {
   console.log(`averge per one${averge}`);
 }
 
-export function askRiddle(riddleObj) {}
-
-export function measureSolveTime(fn) {
-  let start = Date.now();
-  fn();
-  let end = Date.now();
-  const averge = (start - end) / 1000;
-  return averge;
+export function askRiddle(riddleObj) {
+  console.log(riddleObj.name);
+  console.log(riddleObj.taskDescription);
+  if (riddleObj.choices) {
+    for (let i = 0; i < riddleObj.choices?.length; i++) {
+      const element = riddleObj.choices[i];
+      console.log(i + 1, element);
+    }
+  }
+  let answer;
+  while (riddleObj.correctAnswer !== answer) {
+    console.log(riddleObj.taskDescription);
+    answer = input("what is a answer  :");
+  }
 }
 
-export { createPlayer, addSolveTime, showStats };
-// export function test(){
-// const username="enter your number :"
-//     const player=createPlayer(username)
-//     addSolveTime(player,3)
-//     showStats(player)
+export function measureSolveTime(fn) {
+  const start = Date.now();
+  fn();
+  const end = Date.now();
+  const time = (end-start) / 1000;
+  return time;
+}
+
+// function test() {
+//   const player = createPlayer(input("Name: \n"));
+//   for (let index = 0; index < allRiddels.length; index++) {
+//     const riddel = allRiddels[index];
+//     const time = measureSolveTime(() => askRiddle(riddel));
+//     addSolveTime(player, time)
+//   }
+//   showStats(player);
 // }
-// test()
+// test();
