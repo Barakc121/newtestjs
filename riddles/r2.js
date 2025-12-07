@@ -1,6 +1,7 @@
 export default {
-id: 1,
-name: "Easy Math",
-taskDescription: "What is 5 + 3?",
-correctAnswer: "8"
+  id: 4,
+  name: "Animal Sound",
+  taskDescription: "Which of the following makes a 'moo' sound:",
+  choices: ["Dog", "Cow", "Cat"],
+  correctAnswer: "1",
 };
